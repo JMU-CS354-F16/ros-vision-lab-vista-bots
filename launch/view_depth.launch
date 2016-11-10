@@ -1,0 +1,9 @@
+<launch>
+  <include file="$(find turtlebot_bringup)/launch/minimal.launch"/>
+
+  <include file="$(find turtlebot_bringup)/launch/3dsensor.launch"/>	
+
+  <node pkg="three_d_vision" name="kinect_depth_demo" type="kinect_depth_demo.py" output='screen'/>	
+
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find three_d_vision)/rviz/depth.rviz" />
+</launch>
