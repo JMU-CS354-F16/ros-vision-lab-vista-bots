@@ -14,6 +14,25 @@ import cv2
 from cv_bridge import CvBridge, CvBridgeError
 import numpy as np
 
+def find_reddest_pixel_fast(img):
+    """ Return the pixel location of the reddest pixel in the image.
+
+       Redness is defined as: redness = (r - g) + (r - b)
+
+       Arguments:
+            img - height x width x 3 numpy array of uint8 values.
+
+       Returns:
+            A tuple (x,y) containg the position of the reddest pixel.
+    """
+
+    cast = np.array(img, dtype='int32')
+
+    cur_red = (cast[:, :, 2] - cast[:, :, 1]) + (cast[:, :, 2] - cast[:, :, 0])
+
+    most_red = cv2.minMaxLoc(cur_red)[3]
+
+    return most_red
 
 class RedNode(object):
     """ This node reads from the Kinect color stream and
