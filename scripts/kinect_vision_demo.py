@@ -4,6 +4,7 @@
 Demo of reading from and writing to  image topics. 
 
 Author: Nathan Sprague
+        Corey Brundage, Jasmyn Kelly, Nicole Maguire
 Version: 11/15
 """
 
